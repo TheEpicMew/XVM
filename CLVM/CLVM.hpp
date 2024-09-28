@@ -14,8 +14,8 @@ public:
     CLVM();
     ~CLVM();
     void run(const std::string& bytecode);
-    void loadLuaScript(const std::string& script);
-    void runLuaFunction(const std::string& functionName);
+    void LoadScript(const std::string& script);
+    void RunScript(const std::string& functionName);
     
 private:
     LuaStack stack;
