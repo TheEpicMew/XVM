@@ -3,15 +3,26 @@
 
 #include "LuaStack.hpp"
 #include <string>
+extern "C" {
+    #include "lua.h"
+    #include "lualib.h"
+    #include "lauxlib.h"
+}
 
 class CLVM {
 public:
     CLVM();
+    ~CLVM();
     void run(const std::string& bytecode);
+    void loadLuaScript(const std::string& script);
+    void runLuaFunction(const std::string& functionName);
     
 private:
     LuaStack stack;
+    lua_State* L;
     void execute(const std::string& bytecode);
+    void initLua();  
+    void closeLua(); 
 };
 
-#endif
+#endif // CLVM_HPP
