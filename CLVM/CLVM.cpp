@@ -57,13 +57,13 @@ void CLVM::execute(const std::string& bytecode) {
     }
 }
 
-void CLVM::loadLuaScript(const std::string& script) {
+void CLVM::LoadScript(const std::string& script) {
     if (luaL_loadstring(L, script.c_str()) || lua_pcall(L, 0, 0, 0)) {
         lua_pop(L, 1);
     }
 }
 
-void CLVM::runLuaFunction(const std::string& functionName) {
+void CLVM::RunScript(const std::string& functionName) {
     lua_getglobal(L, functionName.c_str()); 
     if (lua_pcall(L, 0, 0, 0) != LUA_OK) {
         lua_pop(L, 1);
